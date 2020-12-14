@@ -59,7 +59,7 @@ static ID	logtask_portid;
 /*
  *  シリアルインタフェースへの1文字出力
  */
-static void
+void
 logtask_putc(char c)
 {
 	(void) serial_wri_dat(logtask_portid, &c, 1);
