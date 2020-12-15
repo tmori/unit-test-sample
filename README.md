@@ -14,18 +14,17 @@ https://github.com/ThrowTheSwitch/CMock.git
 
 ## gcov
 以下の記事が参考になります．
+* https://mcuoneclipse.com/2014/12/26/code-coverage-for-embedded-target-with-eclipse-gcc-and-gcov/
 
-https://mcuoneclipse.com/2014/12/26/code-coverage-for-embedded-target-with-eclipse-gcc-and-gcov/
-
-
-##ビルド方法
+## ビルド方法
 example/test_1/build 直下で，make を実行．
 
-##実行方法
+## 実行方法
 athrill-run を実行．
+
 ※v850e2m 版の athrill がインストールされていることが前提．
 
-##その他メモ
+## その他メモ
 
 ### gcov実行時の注意点
 * 計測開始前に，.ctors セクションの初期化関数を実行する
