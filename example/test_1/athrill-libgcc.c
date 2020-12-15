@@ -10,7 +10,7 @@ int raise(int sig)
 	return 0;
 }
 
-void exit(int status)
+void _exit(int status)
 {
 }
 

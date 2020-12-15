@@ -57,7 +57,8 @@ TARGET = v850_gcc
 #
 SRCLANG = c
 ifeq ($(SRCLANG),c)
-  LIBS = -lgcov  -lm -lc -lgcc 
+  #LIBS = -lgcov  -lm -lc -lgcc 
+  LIBS = -lgcov  -lm  -lc -lgcc 
 #  LIBS = -lm -lc -lgcc 
 endif
 ifeq ($(SRCLANG),c++)
@@ -299,10 +300,10 @@ cfg1_out.c: $(APPL_CFG)
 	$(CFG) --pass 1 --kernel asp $(INCLUDES) $(CFG_TABS) $<
 
 $(CFG2_OUT_SRCS): kernel_cfg.timestamp
-kernel_cfg.timestamp: $(APPL_CFG) \
+kernel_cfg.timestamp: $(APPL_CFG) athrill-syscall.o athrill-libgcc.o \
 						$(START_OBJS) cfg1_out.o $(END_OBJS) $(HIDDEN_OBJS)
 	$(LINK) $(CFLAGS) $(CFG1_OUT_LDFLAGS) -o $(CFG1_OUT) \
-						$(START_OBJS) cfg1_out.o $(END_OBJS)
+						$(START_OBJS) cfg1_out.o athrill-syscall.o athrill-libgcc.o -lgcov -lc -lgcc $(END_OBJS)
 	$(NM) -n $(CFG1_OUT) > cfg1_out.syms
 	$(OBJCOPY) -O srec -S $(CFG1_OUT) cfg1_out.srec
 	$(CFG) --pass 2 --kernel asp $(INCLUDES) \

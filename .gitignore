@@ -1,0 +1,16 @@
+*.o
+*.gcno
+*.gcda
+*.gcov
+asp
+*/asp
+log.txt
+asp.*
+cfg1_out*
+kernel_cfg.*
+libkernel.a
+offset.h
+kernel_cfg_asm.S
+makeoffset.s
+v850es_fk3.map
+arg_sakura.txt
