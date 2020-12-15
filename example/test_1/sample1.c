@@ -59,8 +59,13 @@ static void RunAllTests(void)
 void main_task(intptr_t exinf)
 {
 	syslog(LOG_NOTICE, "TEST START");
+	
+	static_init();
+	
 	UnityMain(0, NULL, RunAllTests);
 
+	gcov_exit();
+	syslog(LOG_NOTICE, "TEST END");
 	SVC_PERROR(ext_ker());
 	assert(0);
 }
@@ -86,3 +91,5 @@ TEST(ProductionCode, test_1)
 	TEST_ASSERT_EQUAL(0, test_1(78));
 	TEST_ASSERT_EQUAL(10, test_1(10));
 }
+
+

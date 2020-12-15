@@ -72,7 +72,7 @@ CFG_TABS := --cfg1-def-table $(SRCDIR)/arch/v850_gcc/prc_def.csv $(CFG_TABS)
 #  リンクに関する設定
 #
 
-LDFLAGS := -nostartfiles -lgcc -lc $(LDFLAGS)
+LDFLAGS := -nostdlib -nostartfiles $(LDFLAGS)
 CFG1_OUT_LDFLAGS := -nostdlib
 
 #

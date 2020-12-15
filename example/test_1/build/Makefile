@@ -57,7 +57,8 @@ TARGET = v850_gcc
 #
 SRCLANG = c
 ifeq ($(SRCLANG),c)
-  LIBS = -lc -lnosys
+  LIBS = -lgcov  -lm -lc -lgcc 
+#  LIBS = -lm -lc -lgcc 
 endif
 ifeq ($(SRCLANG),c++)
   USE_CXX = true
@@ -146,12 +147,12 @@ endif
 ifndef OMIT_OPTIMIZATION
   COPTS := $(COPTS) -O0 -gdwarf-2
 endif
-CDEFS := $(CDEFS) -D ATHRILL_V850 -D UNITY_EXCLUDE_STDINT_H -D UNITY_INCLUDE_CONFIG_H
+CDEFS := $(CDEFS) -D DISABLE_EV3RT_API -D ATHRILL_V850 -D UNITY_EXCLUDE_STDINT_H -D UNITY_INCLUDE_CONFIG_H
 INCLUDES := -I. -I$(SRCDIR)/include -I$(SRCDIR)/arch -I$(SRCDIR) $(INCLUDES)
 LDFLAGS := $(LDFLAGS) 
 CFG1_OUT_LDFLAGS := $(CFG1_OUT_LDFLAGS) 
 LIBS := $(LIBS) $(CXXLIBS)
-CFLAGS = $(COPTS) $(CDEFS) $(INCLUDES)
+CFLAGS = $(COPTS)  -fprofile-arcs -ftest-coverage $(CDEFS) $(INCLUDES)
 
 #
 #  アプリケーションプログラムに関する定義
@@ -358,6 +359,7 @@ ifndef KERNEL_LIB
 	rm -f libkernel.a
 endif
 	rm -f makeoffset.s offset.h
+	rm -f *.gcda *.gcno *.gcov *.map
 
 .PHONY: cleankernel
 cleankernel:

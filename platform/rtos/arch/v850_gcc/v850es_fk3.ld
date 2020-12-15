@@ -157,10 +157,13 @@ SECTIONS
 
 	.bss_noclr	   :
 	{
-	  . = ALIGN(4);
-	  *(.appheap)
-	  *(COMMON)
-	  . = ALIGN(4);
+		. = ALIGN(4);
+		_heap_start = .;
+		*(.appheap)
+		*(COMMON)
+		. = ALIGN(4);
+		_heap_end = .;
+	    _end = .;
 	} > INTRAM2
 
 
@@ -174,16 +177,6 @@ SECTIONS
 		*(.tcommon)
 	} > INTRAM
 
-	.heap	:
-	{
-		. = ALIGN(4);
-		_heap_start = .;
-		*(.appheap)
-		*(COMMON)
-		. = ALIGN(4);
-		_heap_end = .;
-	    _end = .;
-	} > INTRAM
 
 	
 	.comment 0 : { *(.comment) }
