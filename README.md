@@ -31,6 +31,7 @@ athrill-run を実行．
 * 計測終了時に，gcov_exit() を呼び出す(gcc のバージョンで異なる可能性がないか？)
 * gcov_exit()でファイルI/O発生するので，athrillのシステムコールで対応する必要あり※
 * libgcov.a を準備する必要あり(gcc/Makefile の inhibit_libc を falseにする)
+  * https://github.com/tmori/unit-test-sample/releases/tag/v850-gcov
 
 参考：
 * ETロボコン向けのライブラリを流用することで動作確認した．以下のコードを参照．
