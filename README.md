@@ -30,8 +30,11 @@ athrill-run を実行．
 ### gcov実行時の注意点
 * 計測開始前に，.ctors セクションの初期化関数を実行する
 * 計測終了時に，gcov_exit() を呼び出す(gcc のバージョンで異なる可能性がないか？)
-* gcov_exit()でファイルI/O発生するので，athrillのシステムコールで対応する必要あり
-  ※参考：ETロボコン向けのライブラリを流用することで動作確認した．
-  ※https://github.com/tmori/unit-test-sample/blob/master/example/test_1/athrill-libgcc.c
-  ※なお，リンク順番を間違えると，libcのシステムコールが利用されてしまうため要注意．
+* gcov_exit()でファイルI/O発生するので，athrillのシステムコールで対応する必要あり※
 * libgcov.a を準備する必要あり(gcc/Makefile の inhibit_libc を falseにする)
+
+※参考：ETロボコン向けのライブラリを流用することで動作確認した．
+
+※https://github.com/tmori/unit-test-sample/blob/master/example/test_1/athrill-libgcc.c
+
+※なお，リンク順番を間違えると，libcのシステムコールが利用されてしまうため要注意．
