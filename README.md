@@ -33,8 +33,7 @@ athrill-run を実行．
 * gcov_exit()でファイルI/O発生するので，athrillのシステムコールで対応する必要あり※
 * libgcov.a を準備する必要あり(gcc/Makefile の inhibit_libc を falseにする)
 
-※参考：ETロボコン向けのライブラリを流用することで動作確認した．
-
-※https://github.com/tmori/unit-test-sample/blob/master/example/test_1/athrill-libgcc.c
-
-※なお，リンク順番を間違えると，libcのシステムコールが利用されてしまうため要注意．
+参考：
+* ETロボコン向けのライブラリを流用することで動作確認した．以下のコードを参照．
+  * https://github.com/tmori/unit-test-sample/blob/master/example/test_1/athrill-libgcc.c
+* なお，リンク順番を間違えると，libcのシステムコールが利用されてしまうため要注意．
