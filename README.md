@@ -37,3 +37,10 @@ athrill-run を実行．
 * ETロボコン向けのライブラリを流用することで動作確認した．以下のコードを参照．
   * https://github.com/tmori/unit-test-sample/blob/master/example/test_1/athrill-libgcc.c
 * なお，リンク順番を間違えると，libcのシステムコールが利用されてしまうため要注意．
+
+### newlib ビルド時のターゲット依存コンパイルフラグ指定方法
+
+```
+export CFLAGS_FOR_TARGET="-mv850e2v3 -mhard-float" 
+ ../configure --target=v850-elf --prefix=/usr/local
+```
